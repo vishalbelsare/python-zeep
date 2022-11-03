@@ -175,7 +175,6 @@ class AsyncTransport(Transport):
         cache=None,
         timeout=300,
         operation_timeout=None,
-        session=None,
         verify_ssl=True,
         proxy=None,
     ):
@@ -219,7 +218,7 @@ class AsyncTransport(Transport):
         self.logger.debug("HTTP Post to %s:\n%s", address, message)
         response = await self.client.post(
             address,
-            data=message,
+            content=message,
             headers=headers,
         )
         self.logger.debug(
